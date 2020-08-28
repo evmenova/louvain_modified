@@ -16,8 +16,14 @@ Q1 = louvain_modified_algorithm.modularity(
     partition,
     structural_graph,
     attributive_graph,
-    alpha=alpha)
-print(Q1)
+    alpha=alpha)  # find modularity of the best partition
+print(Q1) 
 
-Q2 = community_louvain.modularity(partition, structural_graph)
+Q2 = community_louvain.modularity(partition, structural_graph) # check results if alpha = 0 or alpha = 1
 print(Q2)
+
+Q_structural = alpha * community_louvain.modularity(partition, structural_graph)  # find structural modularity contribution
+print(Q_structural)
+
+Q_attributive = alpha * community_louvain.modularity(partition, attributive_graph)  # find attributive modularity contribution
+print(Q_attributive)
